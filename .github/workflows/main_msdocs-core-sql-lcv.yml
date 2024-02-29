@@ -27,12 +27,6 @@ jobs:
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-      
-      - name: dotnet tool install ef
-        run: dotnet tool install -g dotnet-ef --version 7.0.14
-
-      - name: dotnet ef migrations bundle
-        run: dotnet ef migrations bundle --runtime linux-x64 -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -60,4 +54,4 @@ jobs:
           app-name: 'msdocs-core-sql-lcv'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CAC757E0C094422C86973AB4D55E5F17 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_62735950948146C3BBD0BB0989B47C0F }}
